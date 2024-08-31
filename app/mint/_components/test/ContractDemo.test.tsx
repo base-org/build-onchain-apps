@@ -1,9 +1,5 @@
-/**
- * @jest-environment jsdom
- */
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import OnchainProviders from '@/OnchainProviders';
+import { render, screen } from '@testing-library/react';
 import ContractDemo from '../ContractDemo';
 
 describe('ContractDemo', () => {
@@ -13,6 +9,8 @@ describe('ContractDemo', () => {
         <ContractDemo />
       </OnchainProviders>,
     );
-    expect(screen.getByText('Please connect your wallet to continue.')).toBeInTheDocument();
+    expect(
+      screen.getByText('Please connect your wallet to continue.'),
+    ).toBeInTheDocument();
   });
 });

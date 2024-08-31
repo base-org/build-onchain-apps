@@ -34,14 +34,14 @@ export default function Banner({ pageName, pageUrl, wip }: BannerProps) {
           </h1>
           {wip ? (
             <div className="font-inter text-base font-normal leading-normal ">
-              Just a quick heads up: this experience is a work in progress, keep an eye out for
-              updates as we work on making it even better!
+              Just a quick heads up: this experience is a work in progress, keep
+              an eye out for updates as we work on making it even better!
             </div>
           ) : (
             <div className="font-inter text-base font-normal leading-normal">
-              Take a dive into our fully functional demo page. Explore how the Smart Contract works,
-              connect with it using Wagmi, and master a seamless user experience with React and
-              Tailwind.
+              Take a dive into our fully functional demo page. Explore how the
+              Smart Contract works, connect with it using Wagmi, and master a
+              seamless user experience with React and Tailwind.
             </div>
           )}
         </div>

@@ -1,6 +1,6 @@
+import { convertBigIntTimestampToDate } from '@/utils/timestamp';
 import { Avatar, Name } from '@coinbase/onchainkit/identity';
 import { clsx } from 'clsx';
-import { convertBigIntTimestampToDate } from '@/utils/timestamp';
 import type { CoffeeMemo } from './types';
 
 /**
@@ -10,7 +10,13 @@ import type { CoffeeMemo } from './types';
  * @param message Message sent by the person.
  * @param timestamp Timestamp of the memo.
  */
-function MemoCard({ numCoffees, twitterHandle, message, userAddress, time }: CoffeeMemo) {
+function MemoCard({
+  numCoffees,
+  twitterHandle,
+  message,
+  userAddress,
+  time,
+}: CoffeeMemo) {
   const convertedTimestamp = convertBigIntTimestampToDate(time);
   const numCoffeesInt = Number(numCoffees);
 

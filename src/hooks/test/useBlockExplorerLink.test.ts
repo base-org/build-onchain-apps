@@ -2,9 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { renderHook } from '@testing-library/react';
-import { Chain } from 'viem/chains';
 import { HashType, useBlockExplorerLink } from '@/hooks/useBlockExplorerLink';
+import { renderHook } from '@testing-library/react';
+import type { Chain } from 'viem/chains';
 
 describe('useBlockExplorerLink', () => {
   it('should return the correct explorer link when chain and address are provided', () => {

@@ -8,7 +8,10 @@ type TableOfContentsProps = {
   }[];
 };
 
-export default function TableOfContents({ title, contents }: TableOfContentsProps) {
+export default function TableOfContents({
+  title,
+  contents,
+}: TableOfContentsProps) {
   const pathname = usePathname();
 
   return (

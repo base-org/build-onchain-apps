@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Menu from './Menu';
 
 export type HeaderProps = {
@@ -14,7 +14,8 @@ function Header({ ghost }: HeaderProps) {
     let previousScrollY = window.scrollY;
 
     const handleScroll = () => {
-      const direction = previousScrollY < window.scrollY ? 'scrolling-down' : 'scrolling-up';
+      const direction =
+        previousScrollY < window.scrollY ? 'scrolling-down' : 'scrolling-up';
       const state = window.scrollY < 30 ? 'at-top' : direction;
       previousScrollY = window.scrollY;
       setScrollState(state);
@@ -31,7 +32,10 @@ function Header({ ghost }: HeaderProps) {
   }, [ghost]);
 
   return (
-    <header data-scroll-state={scrollState} className="flex h-[120px] justify-center pt-8">
+    <header
+      data-scroll-state={scrollState}
+      className="flex h-[120px] justify-center pt-8"
+    >
       <Menu />
     </header>
   );

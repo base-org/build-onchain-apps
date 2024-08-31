@@ -1,15 +1,15 @@
-import { useMemo } from 'react';
 import CodeBlock from '@/components/code-block/CodeBlock';
 import {
-  useGuideScroll,
-  P,
+  A,
   H3,
   H4,
-  Section,
   Hr,
-  A,
+  P,
+  Section,
   TableOfContents,
+  useGuideScroll,
 } from '@/components/layout/guide';
+import { useMemo } from 'react';
 
 const codeStep1 = `\`\`\`solidity
 function publicMint(uint256 _amount) external payable whenLive {
@@ -71,11 +71,14 @@ export default function Guide() {
           <Section id="contract-summary">
             <H4>Contract Summary</H4>
             <P>
-              The <code>AllowlistNFT.sol</code> smart contract is an extension of an ERC721 smart
-              contract. The <A href="https://github.com/chiru-labs/ERC721A">ERC721A</A>{' '}
+              The <code>AllowlistNFT.sol</code> smart contract is an extension
+              of an ERC721 smart contract. The{' '}
+              <A href="https://github.com/chiru-labs/ERC721A">ERC721A</A>{' '}
               implementation is an extension of the{' '}
-              <A href="https://eips.ethereum.org/EIPS/eip-721">ERC721 specification</A>, and is
-              optimized for gas savings and batch operations.
+              <A href="https://eips.ethereum.org/EIPS/eip-721">
+                ERC721 specification
+              </A>
+              , and is optimized for gas savings and batch operations.
             </P>
           </Section>
           <Section id="publicMint-explanation">
@@ -83,8 +86,8 @@ export default function Guide() {
               <code className="text-xl">publicMint</code> Explanation
             </H4>
             <P>
-              The <code>publicMint</code> function allows anyone to mint an NFT from the contract so
-              long as the mint is{' '}
+              The <code>publicMint</code> function allows anyone to mint an NFT
+              from the contract so long as the mint is{' '}
               <A href="https://github.com/coinbase/build-onchAin-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L131">
                 live
               </A>{' '}
@@ -104,8 +107,8 @@ export default function Guide() {
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L42">
                 <code>allowlistClose</code>
               </A>{' '}
-              variables, respectively. These values are stored as state variables in the contract,
-              and are set in the{' '}
+              variables, respectively. These values are stored as state
+              variables in the contract, and are set in the{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L76">
                 <code>constructor</code>
               </A>
@@ -116,9 +119,9 @@ export default function Guide() {
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L57">
                 <code>whenLive</code>
               </A>{' '}
-              is attached to the <code>publicMint</code> function, which checks the value of the{' '}
-              <code>live</code> state variable to determine whether to revert the transaction or
-              not.
+              is attached to the <code>publicMint</code> function, which checks
+              the value of the <code>live</code> state variable to determine
+              whether to revert the transaction or not.
             </P>
             <CodeBlock code={codeStep2} language="solidity" />
             <P>
@@ -126,22 +129,25 @@ export default function Guide() {
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L160">
                 toggleLive
               </A>{' '}
-              function to flip the boolean value of live, thus enabling and disabling minting NFTs.
+              function to flip the boolean value of live, thus enabling and
+              disabling minting NFTs.
             </P>
             <P>
-              Assuming <code>live</code> is set to true, the <code>publicMint</code> function will
-              then ensure that the timestamp of the block being mined is{' '}
+              Assuming <code>live</code> is set to true, the{' '}
+              <code>publicMint</code> function will then ensure that the
+              timestamp of the block being mined is{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L132">
                 greater than
               </A>{' '}
-              the timestamp stored in <code>allowlistClose</code>. Otherwise, the transaction will
-              revert.
+              the timestamp stored in <code>allowlistClose</code>. Otherwise,
+              the transaction will revert.
             </P>
             <CodeBlock code={codeStep3} language="solidity" />
             <P>
-              If the above check succeeds, then the requested number of NFTs to mint will be
-              calculated and added to the total number of NFTs the caller (<code>msg.sender</code>)
-              has minted previously. If this new total exceeds the maximum allowed NFTs to mint{' '}
+              If the above check succeeds, then the requested number of NFTs to
+              mint will be calculated and added to the total number of NFTs the
+              caller (<code>msg.sender</code>) has minted previously. If this
+              new total exceeds the maximum allowed NFTs to mint{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L139">
                 per-person
               </A>{' '}
@@ -153,8 +159,8 @@ export default function Guide() {
             </P>
             <CodeBlock code={codeStep4} language="solidity" />
             <P>
-              Then, the function will check the supplied amount of ETH (<code>msg.value</code>) to
-              ensure that{' '}
+              Then, the function will check the supplied amount of ETH (
+              <code>msg.value</code>) to ensure that{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L141">
                 enough ETH has been provided
               </A>{' '}
@@ -162,7 +168,8 @@ export default function Guide() {
             </P>
             <CodeBlock code={codeStep5} language="solidity" />
             <P>
-              Assuming all these checks succeed, <code>publicMint</code> will then{' '}
+              Assuming all these checks succeed, <code>publicMint</code> will
+              then{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L143">
                 mint
               </A>{' '}

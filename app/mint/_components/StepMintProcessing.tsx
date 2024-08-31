@@ -1,6 +1,6 @@
+import Button from '@/components/Button/Button';
 import { SymbolIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
-import Button from '@/components/Button/Button';
 
 export default function StepMintProcessing() {
   return (

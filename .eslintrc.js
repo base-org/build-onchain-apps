@@ -14,11 +14,14 @@ module.exports = {
     'airbnb/rules/react-a11y',
     'plugin:relay/strict',
     'next/core-web-vitals',
-    "prettier"
+    'prettier',
   ],
   rules: {
     'react/destructuring-assignment': 'off',
-    'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx', '.mdx'] }],
+    'react/jsx-filename-extension': [
+      'error',
+      { extensions: ['.jsx', '.tsx', '.mdx'] },
+    ],
 
     // We utilize prop spreading
     'react/jsx-props-no-spreading': 'off',
@@ -43,7 +46,10 @@ module.exports = {
     // We prefer function declarations
     'react/function-component-definition': [
       'error',
-      { namedComponents: 'function-declaration', unnamedComponents: 'function-expression' },
+      {
+        namedComponents: 'function-declaration',
+        unnamedComponents: 'function-expression',
+      },
     ],
 
     // We prefer on/handle named events
@@ -76,7 +82,10 @@ module.exports = {
 
     // Readability
     '@typescript-eslint/adjacent-overload-signatures': 'error',
-    '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: false }],
+    '@typescript-eslint/no-empty-interface': [
+      'error',
+      { allowSingleExtends: false },
+    ],
     '@typescript-eslint/no-parameter-properties': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
 
@@ -90,7 +99,10 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-type-constraint': 'error',
     '@typescript-eslint/prefer-for-of': 'error',
     '@typescript-eslint/prefer-literal-enum-member': 'error',
-    '@typescript-eslint/restrict-plus-operands': ['error', { checkCompoundAssignments: true }],
+    '@typescript-eslint/restrict-plus-operands': [
+      'error',
+      { checkCompoundAssignments: true },
+    ],
     '@typescript-eslint/unified-signatures': 'error',
 
     // Assertions
@@ -102,7 +114,10 @@ module.exports = {
     '@typescript-eslint/prefer-as-const': 'error',
 
     // Comments
-    '@typescript-eslint/ban-ts-comment': ['error', { 'ts-expect-error': 'allow-with-description' }],
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      { 'ts-expect-error': 'allow-with-description' },
+    ],
     '@typescript-eslint/prefer-ts-expect-error': 'error',
     '@typescript-eslint/triple-slash-reference': [
       'error',
@@ -135,11 +150,11 @@ module.exports = {
     'import/order': [
       'error',
       {
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
         },
-        'groups': [
+        groups: [
           'builtin',
           'external',
           'internal',
@@ -147,34 +162,40 @@ module.exports = {
           'sibling',
           'index',
           'object',
-          'type'
+          'type',
         ],
-        "pathGroups": [
+        pathGroups: [
           {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
           },
           {
-            "pattern": "@/**",
-            "group": "external",
-            "position": "after"
-          }
+            pattern: '@/**',
+            group: 'external',
+            position: 'after',
+          },
         ],
-        "pathGroupsExcludedImportTypes": ["react"]
-      }
+        pathGroupsExcludedImportTypes: ['react'],
+      },
     ],
 
     // We prefer labels to be associated with inputs
-    'jsx-a11y/label-has-associated-control': ['error', {
-      'required': {
-        'some': ['nesting', 'id']
-      }
-    }],
-    'jsx-a11y/label-has-for': ['error', {
-      'required': {
-        'some': ['nesting', 'id']
-      }
-    }]
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id'],
+        },
+      },
+    ],
+    'jsx-a11y/label-has-for': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id'],
+        },
+      },
+    ],
   },
 };

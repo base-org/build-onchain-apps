@@ -1,4 +1,3 @@
-import { useCallback, useState } from 'react';
 import {
   ChevronDownIcon,
   Cross1Icon,
@@ -7,13 +6,17 @@ import {
 } from '@radix-ui/react-icons';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
+import { useCallback, useState } from 'react';
 import AccountConnect from './AccountConnect';
 import { Experiences } from './Experiences';
 import { NavbarLink, NavbarTitle } from './Navbar';
 
 export default function NavbarMobile() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const toggleMobileMenuOpen = useCallback(() => setMobileMenuOpen((open) => !open), []);
+  const toggleMobileMenuOpen = useCallback(
+    () => setMobileMenuOpen((open) => !open),
+    [],
+  );
 
   if (isMobileMenuOpen) {
     return (
@@ -39,7 +42,10 @@ export default function NavbarMobile() {
         <div>
           <ul className="mx-2 flex flex-col gap-4">
             <li className="flex">
-              <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
+              <NavbarLink
+                href="https://github.com/coinbase/build-onchain-apps"
+                target="_blank"
+              >
                 <GitHubLogoIcon width="24" height="24" />
               </NavbarLink>
             </li>
@@ -48,7 +54,9 @@ export default function NavbarMobile() {
             </li>
             <li className="flex">
               <NavigationMenu.Root className="relative flex flex-grow flex-col">
-                <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
+                <NavigationMenu.List
+                  className={clsx('flex flex-row space-x-2')}
+                >
                   <NavigationMenu.Item>
                     <NavigationMenu.Trigger className="group flex items-center justify-start gap-1">
                       <span className="font-robotoMono text-center text-base font-normal text-white">
@@ -70,7 +78,9 @@ export default function NavbarMobile() {
                     </NavigationMenu.Content>
                   </NavigationMenu.Item>
                 </NavigationMenu.List>
-                <NavigationMenu.Viewport className={clsx('flex flex-col justify-center')} />
+                <NavigationMenu.Viewport
+                  className={clsx('flex flex-col justify-center')}
+                />
               </NavigationMenu.Root>
             </li>
           </ul>
@@ -92,7 +102,12 @@ export default function NavbarMobile() {
     >
       <div className="flex h-8 grow items-center justify-between gap-4">
         <NavbarTitle />
-        <button type="button" aria-label="Menu" data-state="closed" onClick={toggleMobileMenuOpen}>
+        <button
+          type="button"
+          aria-label="Menu"
+          data-state="closed"
+          onClick={toggleMobileMenuOpen}
+        >
           <HamburgerMenuIcon width="24" height="24" />
         </button>
       </div>

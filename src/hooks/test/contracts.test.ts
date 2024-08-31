@@ -2,10 +2,10 @@
  * @jest-environment jsdom
  */
 
+import { Environment, EnvironmentKeys } from '@/store/environment';
 import { renderHook } from '@testing-library/react';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
-import { Environment, EnvironmentKeys } from '@/store/environment';
 import { generateContractHook } from '../contracts';
 import MockABI from './MockABI';
 
@@ -42,14 +42,21 @@ describe('contracts', () => {
 
     it.each([
       ['onUnsupportedNetwork', { id: 31337 }, Environment.localhost, undefined],
-      ['onUnsupportedNetwork', { id: base.id }, Environment.localhost, undefined],
+      [
+        'onUnsupportedNetwork',
+        { id: base.id },
+        Environment.localhost,
+        undefined,
+      ],
       ['ready', undefined, Environment.localhost, '0xbaseSepolia'],
       ['ready', undefined, Environment.development, '0xbaseSepolia'],
       ['ready', undefined, Environment.staging, '0xbaseSepolia'],
       ['ready', undefined, Environment.production, '0xbaseSepolia'],
       ['ready', { id: baseSepolia.id }, Environment.localhost, '0xbaseSepolia'],
     ])('handles %s state', (state, chain, environment, address) => {
-      mockUseAccount.mockImplementation(() => ({ chain }) as ReturnType<typeof useAccount>);
+      mockUseAccount.mockImplementation(
+        () => ({ chain }) as ReturnType<typeof useAccount>,
+      );
       process.env[EnvironmentKeys.environment] = environment;
 
       const {

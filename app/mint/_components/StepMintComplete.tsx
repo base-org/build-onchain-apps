@@ -1,6 +1,6 @@
-import { useCallback } from 'react';
-import clsx from 'clsx';
 import Button from '@/components/Button/Button';
+import clsx from 'clsx';
+import { useCallback } from 'react';
 import { MintSteps } from './ContractDemo';
 
 type MintCompleteStepProps = {
@@ -8,7 +8,10 @@ type MintCompleteStepProps = {
   collectionName: string | null;
 };
 
-export default function StepMintComplete({ setMintStep, collectionName }: MintCompleteStepProps) {
+export default function StepMintComplete({
+  setMintStep,
+  collectionName,
+}: MintCompleteStepProps) {
   const handleMintAnother = useCallback(() => {
     setMintStep(MintSteps.START_MINT_STEP);
   }, [setMintStep]);

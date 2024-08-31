@@ -1,4 +1,4 @@
-import { getCurrentEnvironment, Environment } from '../store/environment';
+import { Environment, getCurrentEnvironment } from '../store/environment';
 
 export default function isLocal() {
   const env = getCurrentEnvironment();

@@ -6,7 +6,10 @@ export default function Label({
   children: React.ReactNode;
 }) {
   return (
-    <label htmlFor={htmlFor} className="mb-2 block text-sm font-medium text-white">
+    <label
+      htmlFor={htmlFor}
+      className="mb-2 block text-sm font-medium text-white"
+    >
       {children}
     </label>
   );

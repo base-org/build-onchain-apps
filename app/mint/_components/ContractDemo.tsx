@@ -3,9 +3,9 @@ import { encodeFunctionData, formatEther } from 'viem';
 import { useAccount, useEstimateGas } from 'wagmi';
 
 import { FallbackImage } from '@/components/FallbackImage/FallbackImage';
+import NextImage from '@/components/NextImage/NextImage';
 import { SpinnerIcon } from '@/components/icons/SpinnerIcon';
 import AccountConnect from '@/components/layout/header/AccountConnect';
-import NextImage from '@/components/NextImage/NextImage';
 import { EXPECTED_CHAIN } from '@/constants';
 import { useERC1155TokenMetadata } from '@/hooks/useERC1155TokenMetadata';
 import { getChainsForEnvironment } from '@/store/supportedChains';
@@ -14,21 +14,26 @@ import StepStartMint from './StepStartMint';
 import SwitchNetwork from './SwitchNetwork';
 
 export enum MintSteps {
-  START_MINT_STEP,
-  MINT_PROCESSING_STEP,
-  OUT_OF_GAS_STEP,
-  MINT_COMPLETE_STEP,
+  START_MINT_STEP = 0,
+  MINT_PROCESSING_STEP = 1,
+  OUT_OF_GAS_STEP = 2,
+  MINT_COMPLETE_STEP = 3,
 }
 
 export default function MintContractDemo() {
-  const [mintStep, setMintStep] = useState<MintSteps>(MintSteps.START_MINT_STEP);
+  const [mintStep, setMintStep] = useState<MintSteps>(
+    MintSteps.START_MINT_STEP,
+  );
 
   const { chain: accountChain, address, isConnected } = useAccount();
 
   const contract = useCustom1155Contract();
 
   const chain =
-    accountChain ?? getChainsForEnvironment().find((envChain) => EXPECTED_CHAIN.id === envChain.id);
+    accountChain ??
+    getChainsForEnvironment().find(
+      (envChain) => EXPECTED_CHAIN.id === envChain.id,
+    );
 
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
 
@@ -40,31 +45,36 @@ export default function MintContractDemo() {
       chainId: EXPECTED_CHAIN.id,
     });
 
-  const { name: collectionName, description, image: collectionImageUrl } = collectionMetadata ?? {};
+  const {
+    name: collectionName,
+    description,
+    image: collectionImageUrl,
+  } = collectionMetadata ?? {};
 
   // The CustomERC1155 contract is a free mint, so instead of mint price we fetch tx fee estimate
-  const { data: txFeeEstimation, isLoading: isLoadingFeeEstimate } = useEstimateGas({
-    to: contract.status === 'ready' ? contract.address : undefined,
-    account: address,
-    chainId: chain?.id,
-    data: address
-      ? encodeFunctionData({
-          abi: contract.abi,
-          functionName: 'mint',
-          args: [address, BigInt(1), BigInt(1), address],
-        })
-      : undefined,
-    query: { enabled: onCorrectNetwork && !!address },
-  });
+  const { data: txFeeEstimation, isLoading: isLoadingFeeEstimate } =
+    useEstimateGas({
+      to: contract.status === 'ready' ? contract.address : undefined,
+      account: address,
+      chainId: chain?.id,
+      data: address
+        ? encodeFunctionData({
+            abi: contract.abi,
+            functionName: 'mint',
+            args: [address, BigInt(1), BigInt(1), address],
+          })
+        : undefined,
+      query: { enabled: onCorrectNetwork && !!address },
+    });
 
-  const mintTxFeeEstimation = txFeeEstimation ? formatEther(txFeeEstimation, 'gwei') : 'Unknown';
+  const mintTxFeeEstimation = txFeeEstimation
+    ? formatEther(txFeeEstimation, 'gwei')
+    : 'Unknown';
 
   // Collection metadata might not have `name` field, so we fallback to shortened address
   const collectionNameOrAddress =
     collectionName ??
-    (contract.status === 'ready'
-      ? `Collection: ${contract.address}`
-      : '');
+    (contract.status === 'ready' ? `Collection: ${contract.address}` : '');
 
   if (isLoadingCollectionMetadata) {
     return (
@@ -97,7 +107,11 @@ export default function MintContractDemo() {
           <h2 className="my-5">
             Estimated tx fee:{' '}
             {isLoadingFeeEstimate ? (
-              <SpinnerIcon className="inline animate-spin" height="1.2rem" width="1.2rem" />
+              <SpinnerIcon
+                className="inline animate-spin"
+                height="1.2rem"
+                width="1.2rem"
+              />
             ) : (
               <>
                 {mintTxFeeEstimation}
@@ -107,7 +121,9 @@ export default function MintContractDemo() {
           </h2>
         )}
 
-        <p className="mb-6 mt-4 text-sm text-boat-footer-light-gray">{description}</p>
+        <p className="mb-6 mt-4 text-sm text-boat-footer-light-gray">
+          {description}
+        </p>
 
         {contract.status === 'onUnsupportedNetwork' && <SwitchNetwork />}
 

@@ -6,7 +6,10 @@ export type JsonMetadata = {
   image: string | undefined;
 };
 
-function tryParseMetadataJson(str: string, gatewayHostname?: string): JsonMetadata | undefined {
+function tryParseMetadataJson(
+  str: string,
+  gatewayHostname?: string,
+): JsonMetadata | undefined {
   try {
     const json = JSON.parse(str) as JsonMetadata;
     return {

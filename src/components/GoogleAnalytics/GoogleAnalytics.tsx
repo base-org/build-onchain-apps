@@ -1,14 +1,14 @@
 'use client';
 
-import Script from 'next/script';
 import { GOOGLE_ANALYTICS_ID } from '@/utils/gtag';
+import Script from 'next/script';
 
 function GoogleAnalytics() {
   return (
     <>
       <Script
         strategy="afterInteractive"
-        async
+        async={true}
         src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
       />
       <Script

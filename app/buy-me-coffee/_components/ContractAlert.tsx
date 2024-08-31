@@ -1,15 +1,17 @@
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
-import { Abi, parseEther } from 'viem';
+import { type Abi, parseEther } from 'viem';
 
-import { useAccount } from 'wagmi';
-import { UseContractReturn } from '@/hooks/contracts';
+import type { UseContractReturn } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
+import { useAccount } from 'wagmi';
 
 function useCanUserAfford(amount: number) {
   return useLoggedInUserCanAfford(parseEther(String(amount)));
 }
 
-export function ContractAlertLayout({ children }: { children: React.ReactNode }) {
+export function ContractAlertLayout({
+  children,
+}: { children: React.ReactNode }) {
   return (
     <div className="my-3 flex items-center justify-center">
       <div className="mr-2">
@@ -25,12 +27,19 @@ type ContractAlertProps = {
   amount: number;
 };
 
-export default function ContractAlert({ contract, amount }: ContractAlertProps) {
+export default function ContractAlert({
+  contract,
+  amount,
+}: ContractAlertProps) {
   const { isConnected } = useAccount();
   const canAfford = useCanUserAfford(amount);
 
   if (!isConnected) {
-    return <ContractAlertLayout>Please connect your wallet to continue.</ContractAlertLayout>;
+    return (
+      <ContractAlertLayout>
+        Please connect your wallet to continue.
+      </ContractAlertLayout>
+    );
   }
 
   if (contract.status === 'onUnsupportedNetwork') {
@@ -44,7 +53,9 @@ export default function ContractAlert({ contract, amount }: ContractAlertProps) 
 
   if (contract.status === 'deactivated') {
     return (
-      <ContractAlertLayout>This contract has been deactivated on this chain.</ContractAlertLayout>
+      <ContractAlertLayout>
+        This contract has been deactivated on this chain.
+      </ContractAlertLayout>
     );
   }
 

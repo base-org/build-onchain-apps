@@ -1,19 +1,19 @@
-import { getCurrentEnvironment, Environment } from '../../store/environment';
+import { Environment, getCurrentEnvironment } from '../../store/environment';
 import isLocal from '../isLocal';
 
 // Mock the getCurrentEnvironment function
 jest.mock('../../store/environment', () => {
-  const actual =
-    jest.requireActual<typeof import('../../store/environment')>('../../store/environment');
+  const actual = jest.requireActual<typeof import('../../store/environment')>(
+    '../../store/environment',
+  );
   return {
     ...actual,
     getCurrentEnvironment: jest.fn(),
   };
 });
 
-const mockedGetCurrentEnvironment = getCurrentEnvironment as jest.MockedFunction<
-  typeof getCurrentEnvironment
->;
+const mockedGetCurrentEnvironment =
+  getCurrentEnvironment as jest.MockedFunction<typeof getCurrentEnvironment>;
 
 describe('isLocal', () => {
   beforeEach(() => {

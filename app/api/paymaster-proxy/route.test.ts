@@ -1,6 +1,9 @@
-import { isValidAAEntrypoint, isWalletACoinbaseSmartWallet } from '@coinbase/onchainkit/wallet';
-import { NextRequest } from 'next/server';
 import { paymasterClient } from '@/utils/paymasterClient';
+import {
+  isValidAAEntrypoint,
+  isWalletACoinbaseSmartWallet,
+} from '@coinbase/onchainkit/wallet';
+import type { NextRequest } from 'next/server';
 import { POST } from './route';
 
 jest.mock('@coinbase/onchainkit/wallet', () => ({
@@ -17,7 +20,9 @@ describe('POST function', () => {
   it('should return 200 and the result on success for pm_getPaymasterStubData', async () => {
     (isValidAAEntrypoint as jest.Mock).mockReturnValue(true);
     (isWalletACoinbaseSmartWallet as jest.Mock).mockResolvedValue(true);
-    (paymasterClient.getPaymasterStubData as jest.Mock).mockResolvedValue('stub data result');
+    (paymasterClient.getPaymasterStubData as jest.Mock).mockResolvedValue(
+      'stub data result',
+    );
 
     const req = {
       json: jest.fn().mockResolvedValue({
@@ -36,7 +41,9 @@ describe('POST function', () => {
   it('should return 200 and the result on success for pm_getPaymasterData', async () => {
     (isValidAAEntrypoint as jest.Mock).mockReturnValue(true);
     (isWalletACoinbaseSmartWallet as jest.Mock).mockResolvedValue(true);
-    (paymasterClient.getPaymasterData as jest.Mock).mockResolvedValue('paymaster data result');
+    (paymasterClient.getPaymasterData as jest.Mock).mockResolvedValue(
+      'paymaster data result',
+    );
 
     const req = {
       json: jest.fn().mockResolvedValue({

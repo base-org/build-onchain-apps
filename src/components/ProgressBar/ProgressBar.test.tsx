@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ProgressBar from './ProgressBar';
 
@@ -29,6 +25,8 @@ describe('ProgressBar', () => {
     const barClass = `bg-gradient-2`;
 
     render(<ProgressBar percent={PERCENT} barClass={barClass} />);
-    expect(screen.getByTestId(PROGRESS_BAR_TEST_ID).firstChild).toHaveClass(barClass);
+    expect(screen.getByTestId(PROGRESS_BAR_TEST_ID).firstChild).toHaveClass(
+      barClass,
+    );
   });
 });

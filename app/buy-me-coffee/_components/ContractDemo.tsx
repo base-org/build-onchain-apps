@@ -19,7 +19,9 @@ export default function BuyMeCoffeeContractDemo() {
           'bg-boat-color-palette-backgroundalternate p-10',
         ])}
       >
-        <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Messages from supporters</h2>
+        <h2 className="mb-5 w-fit text-2xl font-semibold text-white">
+          Messages from supporters
+        </h2>
 
         {memos?.length > 0 && <Memos memos={memos} />}
       </section>

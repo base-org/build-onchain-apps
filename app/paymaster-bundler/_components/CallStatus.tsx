@@ -1,4 +1,7 @@
-import { useCallsStatus, UseCallsStatusReturnType } from 'wagmi/experimental';
+import {
+  type UseCallsStatusReturnType,
+  useCallsStatus,
+} from 'wagmi/experimental';
 
 type CallStatusData = {
   state: {

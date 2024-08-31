@@ -16,7 +16,10 @@ export default function ProgressBar({
       className={clsx('h-[10px] w-full rounded-full', backgroundClass)}
       data-testid="progress-bar"
     >
-      <div className={clsx('h-[10px] rounded-full', barClass)} style={{ width: `${percent}%` }} />
+      <div
+        className={clsx('h-[10px] rounded-full', barClass)}
+        style={{ width: `${percent}%` }}
+      />
     </div>
   );
 }

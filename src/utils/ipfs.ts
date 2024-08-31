@@ -7,7 +7,7 @@
  * @returns An HTTPS URI that points to the data represented by the cid
  * embedded in the ipfs URI.
  */
-export const ipfsToHTTP = function (ipfsURI: string, gateway = 'ipfs.io') {
+export const ipfsToHTTP = (ipfsURI: string, gateway = 'ipfs.io') => {
   if (ipfsURI.startsWith('http')) {
     return ipfsURI.replace('http://', 'https://');
   }

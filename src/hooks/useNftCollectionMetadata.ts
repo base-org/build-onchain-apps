@@ -1,8 +1,11 @@
+import {
+  type JsonMetadata,
+  getCollectionMetadataAction,
+} from '@/actions/get-collection-metadata';
 import { useQuery } from '@tanstack/react-query';
-import { Abi, Address } from 'abitype';
-import { Chain } from 'viem/chains';
+import type { Abi, Address } from 'abitype';
+import type { Chain } from 'viem/chains';
 import { useAccount, usePublicClient } from 'wagmi';
-import { getCollectionMetadataAction, JsonMetadata } from '@/actions/get-collection-metadata';
 
 const minimalAbiWithContractURI = [
   {
@@ -17,7 +20,9 @@ const minimalAbiWithContractURI = [
 // Returns true if ABI has a contractURI view function
 const getIsAbiWithContractURIViewFunction = (abi: Abi) => {
   const contractURIAbiFunction = abi.find((abiComponent) => {
-    return abiComponent.type === 'function' && abiComponent.name === 'contractURI';
+    return (
+      abiComponent.type === 'function' && abiComponent.name === 'contractURI'
+    );
   }) as unknown as typeof minimalAbiWithContractURI;
 
   return !!contractURIAbiFunction;
@@ -53,10 +58,16 @@ export function useNftCollectionMetadata({
 }: Props) {
   const { chain } = useAccount();
   const chainIdFromArgumentOrConnectedWallet = chainId ?? chain?.id;
-  const publicClient = usePublicClient({ chainId: chainIdFromArgumentOrConnectedWallet });
+  const publicClient = usePublicClient({
+    chainId: chainIdFromArgumentOrConnectedWallet,
+  });
 
   return useQuery<JsonMetadata>({
-    queryKey: ['useCollectionMetadata', address, chainIdFromArgumentOrConnectedWallet],
+    queryKey: [
+      'useCollectionMetadata',
+      address,
+      chainIdFromArgumentOrConnectedWallet,
+    ],
     queryFn: async () => {
       if (!publicClient || !address) {
         throw new Error('Public client not available or address not provided');
@@ -74,7 +85,10 @@ export function useNftCollectionMetadata({
       });
 
       // eslint-disable-next-line @typescript-eslint/return-await
-      return await getCollectionMetadataAction({ metadataURI, gatewayHostname });
+      return await getCollectionMetadataAction({
+        metadataURI,
+        gatewayHostname,
+      });
     },
     refetchOnWindowFocus: false,
     enabled: enabled && !!chainIdFromArgumentOrConnectedWallet,

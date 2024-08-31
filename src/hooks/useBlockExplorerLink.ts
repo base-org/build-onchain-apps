@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Chain } from 'viem/chains';
+import type { Chain } from 'viem/chains';
 
 export enum HashType {
   Address = 'address',

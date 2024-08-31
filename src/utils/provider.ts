@@ -1,5 +1,5 @@
-import { createPublicClient, http } from 'viem';
-import { Chain } from 'viem/chains';
+import { http, createPublicClient } from 'viem';
+import type { Chain } from 'viem/chains';
 
 export function getRpcProviderForChain(chain: Chain) {
   return createPublicClient({

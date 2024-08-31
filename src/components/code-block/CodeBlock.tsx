@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import * as React from 'react';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
@@ -40,7 +39,10 @@ function Code({ code }: { code: string }) {
   return <code dangerouslySetInnerHTML={{ __html: innerHtml }} />;
 }
 
-export default function CodeBlock({ code, language = 'sh' }: { code: string; language?: string }) {
+export default function CodeBlock({
+  code,
+  language = 'sh',
+}: { code: string; language?: string }) {
   return (
     <div className={styles.CodeBlock}>
       <span className={styles.CodeBlockLang}>{language}</span>

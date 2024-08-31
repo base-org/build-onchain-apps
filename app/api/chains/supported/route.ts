@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import { getChainsForEnvironment } from '@/store/supportedChains';
+import { NextResponse } from 'next/server';
 
 /**
  * Handler for the /api/chains/supported route, this route will return all the supported
@@ -13,7 +13,10 @@ export async function GET(): Promise<Response> {
     return NextResponse.json(chains, { status: 200 });
   } catch (error) {
     console.error('Error fetching chains:', error);
-    return NextResponse.json({}, { status: 500, statusText: 'Internal Server Error' });
+    return NextResponse.json(
+      {},
+      { status: 500, statusText: 'Internal Server Error' },
+    );
   }
 }
 

@@ -22,7 +22,9 @@ describe('createWagmiConfig', () => {
     Environment.production,
   ])('returns valid Wagmi config when env=%s', (environment) => {
     process.env[EnvironmentKeys.environment] = environment;
-    const config = createWagmiConfig('https://api.developer.coinbase.com/rpc/v1/base/example');
+    const config = createWagmiConfig(
+      'https://api.developer.coinbase.com/rpc/v1/base/example',
+    );
     expect(config.chains[0].id).toEqual(baseSepolia.id);
   });
 });

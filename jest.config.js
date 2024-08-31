@@ -7,7 +7,8 @@ const customJestConfig = {
   coverageReporters: ['clover', 'json', 'lcov', 'text'],
   moduleNameMapper: {
     'rehype-pretty-code': '<rootDir>/node_modules/rehype-pretty-code',
-    '@coinbase/onchainkit/wallet': '<rootDir>/node_modules/@coinbase/onchainkit/esm/wallet',
+    '@coinbase/onchainkit/wallet':
+      '<rootDir>/node_modules/@coinbase/onchainkit/esm/wallet',
   },
   roots: ['<rootDir>/src', '<rootDir>/app/api/paymaster-proxy'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],

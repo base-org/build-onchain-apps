@@ -18,9 +18,12 @@ describe('useDebounce', () => {
   it('debounces', async () => {
     const initialValue = 'init';
     const delay = 1;
-    const { rerender, result } = renderHook(({ value }) => useDebounce(value, delay), {
-      initialProps: { value: initialValue },
-    });
+    const { rerender, result } = renderHook(
+      ({ value }) => useDebounce(value, delay),
+      {
+        initialProps: { value: initialValue },
+      },
+    );
 
     const updatedValue = 'updatedValue';
     act(() => rerender({ value: updatedValue }));

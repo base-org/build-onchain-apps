@@ -31,12 +31,17 @@ export function NavbarLink({
 export function NavbarTitle() {
   return (
     <div className="flex h-8 items-center justify-start gap-4">
-      <NextLink href="/" passHref className="relative h-8 w-8" aria-label="Home page">
+      <NextLink
+        href="/"
+        passHref={true}
+        className="relative h-8 w-8"
+        aria-label="Home page"
+      >
         <div className="absolute size-8 rounded-full bg-white" />
       </NextLink>
       <NextLink
         href="/"
-        passHref
+        passHref={true}
         className="font-robotoMono text-center text-xl font-medium text-white no-underline"
         aria-label="build-onchain-apps Github repository"
       >
@@ -59,7 +64,10 @@ function Navbar() {
         <div className="flex items-center justify-start gap-8">
           <ul className="hidden items-center justify-start gap-8 md:flex">
             <li className="flex">
-              <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
+              <NavbarLink
+                href="https://github.com/coinbase/build-onchain-apps"
+                target="_blank"
+              >
                 <GitHubLogoIcon
                   width="24"
                   height="24"
@@ -72,7 +80,9 @@ function Navbar() {
             </li>
             <li className="flex">
               <NavigationMenu.Root className="relative">
-                <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
+                <NavigationMenu.List
+                  className={clsx('flex flex-row space-x-2')}
+                >
                   <NavigationMenu.Item>
                     <NavigationMenu.Trigger className="group flex h-16 items-center justify-start gap-1">
                       <span className="font-robotoMono text-center text-base font-normal text-white">

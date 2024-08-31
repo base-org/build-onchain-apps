@@ -1,5 +1,5 @@
-import { MouseEventHandler, ReactNode } from 'react';
 import clsx from 'clsx';
+import type { MouseEventHandler, ReactNode } from 'react';
 
 type ButtonProps = {
   buttonContent: ReactNode | string;

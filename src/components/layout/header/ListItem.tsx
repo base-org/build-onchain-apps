@@ -1,6 +1,6 @@
-import { forwardRef } from 'react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
+import { forwardRef } from 'react';
 
 export const ListItem = forwardRef(function ListItem(
   {
@@ -16,10 +16,15 @@ export const ListItem = forwardRef(function ListItem(
 ) {
   return (
     <div className="inline-flex items-center justify-start gap-8">
-      <NavigationMenu.Link asChild className="flex items-center justify-start gap-1">
+      <NavigationMenu.Link
+        asChild={true}
+        className="flex items-center justify-start gap-1"
+      >
         <a
           href={href}
-          className={clsx('font-robotoMono text-base font-normal text-white no-underline')}
+          className={clsx(
+            'font-robotoMono text-base font-normal text-white no-underline',
+          )}
           ref={ref}
           target={target}
         >

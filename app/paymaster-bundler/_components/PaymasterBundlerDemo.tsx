@@ -1,7 +1,7 @@
+import { ContractAlertLayout } from 'app/buy-me-coffee/_components/ContractAlert';
 import clsx from 'clsx';
 import { useAccount } from 'wagmi';
 import { useWriteContracts } from 'wagmi/experimental';
-import { ContractAlertLayout } from 'app/buy-me-coffee/_components/ContractAlert';
 import isLocal from '../../../src/utils/isLocal';
 import { usePaymasterBundlerContract } from '../_contracts/usePaymasterBundlerContract';
 import { CallStatus } from './CallStatus';
@@ -42,10 +42,22 @@ export default function PaymasterBundlerDemo() {
   };
 
   return (
-    <div className={clsx('flex w-full flex-col items-center justify-center text-white')}>
-      <section className={clsx('mb-5 w-full max-w-3xl rounded-lg bg-gray-900 p-6 shadow-md')}>
+    <div
+      className={clsx(
+        'flex w-full flex-col items-center justify-center text-white',
+      )}
+    >
+      <section
+        className={clsx(
+          'mb-5 w-full max-w-3xl rounded-lg bg-gray-900 p-6 shadow-md',
+        )}
+      >
         <header>
-          <h2 className={clsx('border-b-2 border-gray-700 pb-2 text-xl font-semibold')}>
+          <h2
+            className={clsx(
+              'border-b-2 border-gray-700 pb-2 text-xl font-semibold',
+            )}
+          >
             Account Details
           </h2>
         </header>
@@ -55,14 +67,24 @@ export default function PaymasterBundlerDemo() {
           </div>
         )}
       </section>
-      <section className={clsx('w-full max-w-3xl rounded-lg bg-gray-900 p-6 shadow-md')}>
+      <section
+        className={clsx(
+          'w-full max-w-3xl rounded-lg bg-gray-900 p-6 shadow-md',
+        )}
+      >
         <header>
-          <h1 className={clsx('border-b-2 border-gray-700 pb-2 text-center text-2xl font-bold')}>
+          <h1
+            className={clsx(
+              'border-b-2 border-gray-700 pb-2 text-center text-2xl font-bold',
+            )}
+          >
             Mint NFTs with Coinbase Paymaster
           </h1>
         </header>
         {!address && (
-          <ContractAlertLayout>Please connect your wallet to continue.</ContractAlertLayout>
+          <ContractAlertLayout>
+            Please connect your wallet to continue.
+          </ContractAlertLayout>
         )}
         <button
           type="button"

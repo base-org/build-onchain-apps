@@ -1,5 +1,7 @@
-import { useCallback, useEffect } from 'react';
+import Button from '@/components/Button/Button';
+import { EXPECTED_CHAIN } from '@/constants';
 import clsx from 'clsx';
+import { useCallback, useEffect } from 'react';
 import { TransactionExecutionError } from 'viem';
 import {
   useAccount,
@@ -7,8 +9,6 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from 'wagmi';
-import Button from '@/components/Button/Button';
-import { EXPECTED_CHAIN } from '@/constants';
 import { useCustom1155Contract } from '../_contracts/useCustom1155Contract';
 import { MintSteps } from './ContractDemo';
 import StepMintComplete from './StepMintComplete';
@@ -21,7 +21,11 @@ type StartMintProps = {
   collectionName: string | null;
 };
 
-export default function StepStartMint({ setMintStep, mintStep, collectionName }: StartMintProps) {
+export default function StepStartMint({
+  setMintStep,
+  mintStep,
+  collectionName,
+}: StartMintProps) {
   const { chain } = useAccount();
   const { address } = useAccount();
   const contract = useCustom1155Contract();
@@ -38,7 +42,11 @@ export default function StepStartMint({ setMintStep, mintStep, collectionName }:
     },
   });
 
-  const { writeContract: performMint, error: errorMint, data: dataMint } = useWriteContract();
+  const {
+    writeContract: performMint,
+    error: errorMint,
+    data: dataMint,
+  } = useWriteContract();
 
   const { status: transactionStatus } = useWaitForTransactionReceipt({
     hash: dataMint,
@@ -56,7 +64,9 @@ export default function StepStartMint({ setMintStep, mintStep, collectionName }:
       const isOutOfGas =
         errorMint instanceof TransactionExecutionError &&
         errorMint.message.toLowerCase().includes('out of gas');
-      setMintStep(isOutOfGas ? MintSteps.OUT_OF_GAS_STEP : MintSteps.START_MINT_STEP);
+      setMintStep(
+        isOutOfGas ? MintSteps.OUT_OF_GAS_STEP : MintSteps.START_MINT_STEP,
+      );
     }
   }, [transactionStatus, setMintStep, errorMint]);
 
@@ -70,9 +80,14 @@ export default function StepStartMint({ setMintStep, mintStep, collectionName }:
   return (
     <>
       {mintStep === MintSteps.MINT_PROCESSING_STEP && <StepMintProcessing />}
-      {mintStep === MintSteps.OUT_OF_GAS_STEP && <StepOutOfGas setMintStep={setMintStep} />}
+      {mintStep === MintSteps.OUT_OF_GAS_STEP && (
+        <StepOutOfGas setMintStep={setMintStep} />
+      )}
       {mintStep === MintSteps.MINT_COMPLETE_STEP && (
-        <StepMintComplete setMintStep={setMintStep} collectionName={collectionName} />
+        <StepMintComplete
+          setMintStep={setMintStep}
+          collectionName={collectionName}
+        />
       )}
 
       {mintStep === MintSteps.START_MINT_STEP && (
@@ -80,7 +95,10 @@ export default function StepStartMint({ setMintStep, mintStep, collectionName }:
           buttonContent="Mint"
           onClick={handleMint}
           disabled={!onCorrectNetwork}
-          className={clsx('my-4', onCorrectNetwork ? 'bg-white' : 'bg-gray-400')}
+          className={clsx(
+            'my-4',
+            onCorrectNetwork ? 'bg-white' : 'bg-gray-400',
+          )}
         />
       )}
     </>

@@ -12,6 +12,8 @@ describe('CodeBlock', () => {
 
   it('should eventually render code snippet', async () => {
     render(<CodeBlock code={"import React from 'react';"} />);
-    expect(await screen.findByText("import React from 'react';")).toBeInTheDocument();
+    expect(
+      await screen.findByText("import React from 'react';"),
+    ).toBeInTheDocument();
   });
 });

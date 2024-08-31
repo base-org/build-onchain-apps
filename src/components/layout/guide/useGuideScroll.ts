@@ -3,7 +3,10 @@ import { useEffect } from 'react';
 export default function useGuideScroll() {
   useEffect(() => {
     function convertRemToPixels(rem: number) {
-      return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+      return (
+        rem *
+        Number.parseFloat(getComputedStyle(document.documentElement).fontSize)
+      );
     }
 
     function handleScroll() {

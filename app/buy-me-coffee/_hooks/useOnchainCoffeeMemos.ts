@@ -1,8 +1,8 @@
+import { markStep } from '@/utils/analytics';
 import { useMemo } from 'react';
 import { useReadContract } from 'wagmi';
-import { markStep } from '@/utils/analytics';
-import { useBuyMeACoffeeContract } from '../_contracts/useBuyMeACoffeeContract';
 import type { CoffeeMemo } from '../_components/types';
+import { useBuyMeACoffeeContract } from '../_contracts/useBuyMeACoffeeContract';
 
 /**
  * Hooks is abstracting away the logic of calling a read-only function on a contract.
@@ -24,7 +24,9 @@ function useOnchainCoffeeMemos() {
   return useMemo(
     () => ({
       memos:
-        contractReadResult.status === 'success' ? (contractReadResult.data as CoffeeMemo[]) : [],
+        contractReadResult.status === 'success'
+          ? (contractReadResult.data as CoffeeMemo[])
+          : [],
       refetchMemos: contractReadResult.refetch,
     }),
     [contractReadResult],

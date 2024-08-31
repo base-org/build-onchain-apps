@@ -1,11 +1,14 @@
-import { isValidAAEntrypoint, isWalletACoinbaseSmartWallet } from '@coinbase/onchainkit/wallet';
-import { NextRequest, NextResponse } from 'next/server';
-import { UserOperation } from 'permissionless';
 import { client, paymasterClient } from '@/utils/paymasterClient';
+import {
+  isValidAAEntrypoint,
+  isWalletACoinbaseSmartWallet,
+} from '@coinbase/onchainkit/wallet';
 import type {
   IsValidAAEntrypointOptions,
   IsWalletACoinbaseSmartWalletOptions,
 } from '@coinbase/onchainkit/wallet';
+import { type NextRequest, NextResponse } from 'next/server';
+import type { UserOperation } from 'permissionless';
 
 type PaymasterRequest = {
   method: string;
@@ -58,6 +61,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
     console.error('Error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
   }
 }

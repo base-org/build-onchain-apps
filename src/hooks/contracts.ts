@@ -1,6 +1,6 @@
-import { Abi, Address, type Chain } from 'viem';
-import { useAccount } from 'wagmi';
 import { getChainsForEnvironment } from '@/store/supportedChains';
+import type { Abi, Address, Chain } from 'viem';
+import { useAccount } from 'wagmi';
 
 type ContractInstance = {
   chain: Chain;
@@ -8,7 +8,10 @@ type ContractInstance = {
   deactivated?: boolean;
 };
 
-export type UseContractReturn<T extends Abi> = { abi: T; supportedChains: Chain[] } & (
+export type UseContractReturn<T extends Abi> = {
+  abi: T;
+  supportedChains: Chain[];
+} & (
   | { address: Address; status: 'ready' }
   | { status: 'onUnsupportedNetwork' }
   | { status: 'deactivated' }
@@ -31,7 +34,9 @@ export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
     const chain =
       accountChain ??
       supportedChains.find((supportedChain) =>
-        getChainsForEnvironment().some((envChain) => supportedChain.id === envChain.id),
+        getChainsForEnvironment().some(
+          (envChain) => supportedChain.id === envChain.id,
+        ),
       );
 
     if (chain && chain.id in spec) {

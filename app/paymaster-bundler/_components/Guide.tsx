@@ -1,18 +1,18 @@
-/* eslint-disable react/no-unescaped-entities */
-import { useMemo } from 'react';
 import CodeBlock from '@/components/code-block/CodeBlock';
 import {
-  useGuideScroll,
-  P,
+  A,
   H3,
   H4,
-  Section,
   Hr,
-  A,
-  Ul,
   Li,
+  P,
+  Section,
   TableOfContents,
+  Ul,
+  useGuideScroll,
 } from '@/components/layout/guide';
+/* eslint-disable react/no-unescaped-entities */
+import { useMemo } from 'react';
 
 const validateUserOperation = `\`\`\`javascript
 import { ENTRYPOINT_ADDRESS_V06, UserOperation } from "permissionless";
@@ -230,93 +230,122 @@ export default function NewGuide() {
 
   return (
     <div>
-      <H3 id="guide">Guide to Using Smart Wallets with Sponsored Transactions</H3>
+      <H3 id="guide">
+        Guide to Using Smart Wallets with Sponsored Transactions
+      </H3>
       <div className="gap-16 lg:flex">
         <main className="w-full flex-shrink-0 flex-grow xl:max-w-[900px]">
           <Hr />
           <Section id="introduction">
             <H4>Paymasters (Sponsored Transactions)</H4>
             <P>
-              One of the biggest UX enhancements unlocked by Smart Wallet is the ability for app
-              developers to sponsor their users' transactions. If your app supports Smart Wallet,
-              you can start sponsoring your users' transactions by using{' '}
+              One of the biggest UX enhancements unlocked by Smart Wallet is the
+              ability for app developers to sponsor their users' transactions.
+              If your app supports Smart Wallet, you can start sponsoring your
+              users' transactions by using{' '}
               <A href="https://www.erc7677.xyz/introduction">
                 standardized paymaster service communication
               </A>
-              <A href="https://www.eip5792.xyz/introduction">enabled by new wallet RPC methods</A>.
-              This code is also in our{' '}
-              <A href="https://github.com/wilsoncusack/wagmi-scw/">Wagmi Smart Wallet template</A>.
+              <A href="https://www.eip5792.xyz/introduction">
+                enabled by new wallet RPC methods
+              </A>
+              . This code is also in our{' '}
+              <A href="https://github.com/wilsoncusack/wagmi-scw/">
+                Wagmi Smart Wallet template
+              </A>
+              .
             </P>
           </Section>
           <Section id="choosing-paymaster">
             <H4>1. Choose a Paymaster Service Provider</H4>
             <P>
-              As a prerequisite, you'll need to obtain a paymaster service URL from a paymaster
-              service provider. To be compatible with Smart Wallet, the paymaster provider you
-              choose must be ERC-7677-compliant.
+              As a prerequisite, you'll need to obtain a paymaster service URL
+              from a paymaster service provider. To be compatible with Smart
+              Wallet, the paymaster provider you choose must be
+              ERC-7677-compliant.
             </P>
             <P>
-              We recommend the <A href="https://login.coinbase.com">Coinbase Developer Platform</A>{' '}
-              paymaster. You can find a full list of ERC-7677-compliant paymaster services{' '}
+              We recommend the{' '}
+              <A href="https://login.coinbase.com">
+                Coinbase Developer Platform
+              </A>{' '}
+              paymaster. You can find a full list of ERC-7677-compliant
+              paymaster services{' '}
               <A href="https://www.erc7677.xyz/ecosystem/paymasters">here</A>.
             </P>
             <P>
-              Once you choose a paymaster service provider and obtain a paymaster service URL, you
-              can proceed to integration.
+              Once you choose a paymaster service provider and obtain a
+              paymaster service URL, you can proceed to integration.
             </P>
           </Section>
           <Section id="setting-proxy">
             <H4>2. (Recommended) Set Up Your Paymaster Proxy</H4>
             <P>
-              Creating an API to proxy calls to your paymaster service is important for two reasons:
+              Creating an API to proxy calls to your paymaster service is
+              important for two reasons:
             </P>
             <Ul>
               <Li>It allows you to protect any API secret.</Li>
-              <Li>It allows you to add extra validation on what requests you want to sponsor.</Li>
+              <Li>
+                It allows you to add extra validation on what requests you want
+                to sponsor.
+              </Li>
             </Ul>
             <H4>Validate UserOperation</H4>
             <P>
-              Before we write our proxy, let's write a willSponsor function to add some extra
-              validation. The policies on many paymaster services are quite simple and limited. As
-              your API will be exposed on the web, you want to make sure it cannot be abused: called
-              to sponsor transactions you do not want to fund. The checks below are a bit tedious,
-              but highly recommended to be safe. See "Trust and Validation"{' '}
+              Before we write our proxy, let's write a willSponsor function to
+              add some extra validation. The policies on many paymaster services
+              are quite simple and limited. As your API will be exposed on the
+              web, you want to make sure it cannot be abused: called to sponsor
+              transactions you do not want to fund. The checks below are a bit
+              tedious, but highly recommended to be safe. See "Trust and
+              Validation"{' '}
               <A href="https://hackmd.io/@AhweV9sISeevhvrtVPCGDw/BynRsX7Ca#Trust-and-Validation">
                 here
               </A>{' '}
-              for more on this. The code below is built specifically for Smart Wallets; it would
-              need to be updated to support other smart accounts.
+              for more on this. The code below is built specifically for Smart
+              Wallets; it would need to be updated to support other smart
+              accounts.
             </P>
             <CodeBlock code={validateUserOperation} language="javascript" />
           </Section>
           <Section id="setting-proxy">
             <H4>Create Proxy</H4>
             <P>
-              The proxy you create will need to handle the pm_getPaymasterStubData and
-              pm_getPaymasterData JSON-RPC requests specified by ERC-7677.
+              The proxy you create will need to handle the
+              pm_getPaymasterStubData and pm_getPaymasterData JSON-RPC requests
+              specified by ERC-7677.
             </P>
             <CodeBlock code={createProxy} language="javascript" />
           </Section>
           <Section id="send-eip-5792-requests">
-            <H4>3. Send EIP-5792 Requests with a Paymaster Service Capability</H4>
+            <H4>
+              3. Send EIP-5792 Requests with a Paymaster Service Capability
+            </H4>
             <P>
-              Once you have your paymaster service set up, you can now pass its URL along to Wagmi's
-              useWriteContracts hook. If you set up a proxy in your app's backend as recommended in
-              step (2) above, you'll want to pass in the proxy URL you created.
+              Once you have your paymaster service set up, you can now pass its
+              URL along to Wagmi's useWriteContracts hook. If you set up a proxy
+              in your app's backend as recommended in step (2) above, you'll
+              want to pass in the proxy URL you created.
             </P>
             <CodeBlock code={sendEIP5792Requests} language="javascript" />
             <P>
-              That's it! Smart Wallet will handle the rest. If your paymaster service is able to
-              sponsor the transaction, Smart Wallet will indicate to your user that the transaction
-              is sponsored.
+              That's it! Smart Wallet will handle the rest. If your paymaster
+              service is able to sponsor the transaction, Smart Wallet will
+              indicate to your user that the transaction is sponsored.
             </P>
           </Section>
         </main>
-        <TableOfContents title="Guide to Sponsored Transactions" contents={contents} />
+        <TableOfContents
+          title="Guide to Sponsored Transactions"
+          contents={contents}
+        />
       </div>
       <P>
         <strong>See full documentation here:</strong>{' '}
-        <A href="https://www.smartwallet.dev/">Smart Wallet Documentation</A>{' '}
+        <A href="https://www.smartwallet.dev/">
+          Smart Wallet Documentation
+        </A>{' '}
       </P>
     </div>
   );

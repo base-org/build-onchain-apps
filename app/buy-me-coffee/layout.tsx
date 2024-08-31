@@ -8,6 +8,8 @@ export const metadata = generateMetadata({
   pathname: 'buy-me-coffee',
 });
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({
+  children,
+}: { children: React.ReactNode }) {
   return children;
 }

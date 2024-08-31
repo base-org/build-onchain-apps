@@ -1,5 +1,8 @@
 import { useAccount } from 'wagmi';
-import { useCapabilities, UseCapabilitiesReturnType } from 'wagmi/experimental';
+import {
+  type UseCapabilitiesReturnType,
+  useCapabilities,
+} from 'wagmi/experimental';
 
 /**
  * Capabilities component displays the Smart Wallet capabilities of the current account.

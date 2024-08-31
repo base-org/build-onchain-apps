@@ -1,16 +1,22 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Abi, TransactionExecutionError } from 'viem';
-import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
-import { UseContractReturn } from '@/hooks/contracts';
+import type { UseContractReturn } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { type Abi, TransactionExecutionError } from 'viem';
+import {
+  useSimulateContract,
+  useWaitForTransactionReceipt,
+  useWriteContract,
+} from 'wagmi';
 
 export enum TransactionStates {
-  START,
-  COMPLETE,
-  OUT_OF_GAS,
+  START = 0,
+  COMPLETE = 1,
+  OUT_OF_GAS = 2,
 }
 
-type AsyncFunction<Args extends unknown[], ReturnType> = (...args: Args) => Promise<ReturnType>;
+type AsyncFunction<Args extends unknown[], ReturnType> = (
+  ...args: Args
+) => Promise<ReturnType>;
 
 export default function useSmartContractForms({
   gasFee,
@@ -27,7 +33,8 @@ export default function useSmartContractForms({
   enableSubmit: boolean;
   reset: AsyncFunction<unknown[], unknown>;
 }) {
-  const [transactionState, setTransactionState] = useState<TransactionStates | null>(null);
+  const [transactionState, setTransactionState] =
+    useState<TransactionStates | null>(null);
 
   const canAfford = useLoggedInUserCanAfford(gasFee);
 
@@ -56,7 +63,10 @@ export default function useSmartContractForms({
     },
   });
 
-  const disabled = contract.status !== 'ready' || writeContractStatus === 'pending' || !canAfford;
+  const disabled =
+    contract.status !== 'ready' ||
+    writeContractStatus === 'pending' ||
+    !canAfford;
 
   const onSubmitTransaction = useCallback(
     (event: { preventDefault: () => void }) => {
@@ -101,7 +111,13 @@ export default function useSmartContractForms({
     }
 
     void onTransactionReceiptStatus();
-  }, [dataHash, reset, setTransactionState, transactionReceiptStatus, writeContractError]);
+  }, [
+    dataHash,
+    reset,
+    setTransactionState,
+    transactionReceiptStatus,
+    writeContractError,
+  ]);
 
   return useMemo(
     () => ({

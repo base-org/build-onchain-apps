@@ -1,5 +1,5 @@
-import { SymbolIcon } from '@radix-ui/react-icons';
 import Button from '@/components/Button/Button';
+import { SymbolIcon } from '@radix-ui/react-icons';
 import TransactionStep from './TransactionStep';
 import { TransactionStates } from './useSmartContractForms';
 
@@ -13,7 +13,7 @@ type TransactionStepsProps = {
 export default function TransactionSteps({
   transactionStep,
   coffeeCount,
-  resetContractForms: resetContractForms,
+  resetContractForms,
   gasCost,
 }: TransactionStepsProps) {
   if (transactionStep === TransactionStates.START) {
@@ -39,7 +39,10 @@ export default function TransactionSteps({
         icon="🎁"
         helpText="Thank you for supporting this endeavor!"
       >
-        <Button buttonContent="Send another coffee" onClick={resetContractForms} />
+        <Button
+          buttonContent="Send another coffee"
+          onClick={resetContractForms}
+        />
       </TransactionStep>
     );
   }

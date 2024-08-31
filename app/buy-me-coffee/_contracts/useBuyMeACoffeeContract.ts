@@ -1,5 +1,5 @@
-import { baseSepolia } from 'viem/chains';
 import { generateContractHook } from '@/hooks/contracts';
+import { baseSepolia } from 'viem/chains';
 import BuyMeACoffeeABI from './BuyMeACoffeeABI';
 
 /**

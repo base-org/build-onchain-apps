@@ -1,9 +1,12 @@
+import {
+  type JsonMetadata,
+  getCollectionMetadataAction,
+} from '@/actions/get-collection-metadata';
 import { useQuery } from '@tanstack/react-query';
-import { Address } from 'abitype';
-import { Abi } from 'viem';
-import { Chain } from 'viem/chains';
+import type { Address } from 'abitype';
+import type { Abi } from 'viem';
+import type { Chain } from 'viem/chains';
 import { useAccount, usePublicClient } from 'wagmi';
-import { getCollectionMetadataAction, JsonMetadata } from '@/actions/get-collection-metadata';
 
 const minimalERC1155Abi = [
   {
@@ -57,10 +60,16 @@ export function useERC1155TokenMetadata({
 }: Props) {
   const { chain } = useAccount();
   const chainIdFromArgumentOrConnectedWallet = chainId ?? chain?.id;
-  const publicClient = usePublicClient({ chainId: chainIdFromArgumentOrConnectedWallet });
+  const publicClient = usePublicClient({
+    chainId: chainIdFromArgumentOrConnectedWallet,
+  });
 
   return useQuery<JsonMetadata>({
-    queryKey: ['useCollectionMetadata', address, chainIdFromArgumentOrConnectedWallet],
+    queryKey: [
+      'useCollectionMetadata',
+      address,
+      chainIdFromArgumentOrConnectedWallet,
+    ],
     queryFn: async () => {
       if (!publicClient || !address) {
         throw new Error('Public client not available or address not provided');
@@ -77,7 +86,10 @@ export function useERC1155TokenMetadata({
         args: [tokenId],
       });
       // eslint-disable-next-line @typescript-eslint/return-await
-      return await getCollectionMetadataAction({ metadataURI: uri, gatewayHostname });
+      return await getCollectionMetadataAction({
+        metadataURI: uri,
+        gatewayHostname,
+      });
     },
     refetchOnWindowFocus: false,
     enabled: enabled && !!chainIdFromArgumentOrConnectedWallet,

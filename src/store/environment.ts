@@ -22,7 +22,9 @@ export function getCurrentEnvironment(): Environment {
   }
 
   // Convert string to ReleaseStage enum value
-  const releaseStageValue = Object.values(Environment).find((value) => value === stage);
+  const releaseStageValue = Object.values(Environment).find(
+    (value) => value === stage,
+  );
 
   return releaseStageValue ?? Environment.localhost;
 }

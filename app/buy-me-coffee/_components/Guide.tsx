@@ -1,15 +1,15 @@
-import { useMemo } from 'react';
 import CodeBlock from '@/components/code-block/CodeBlock';
 import {
-  useGuideScroll,
-  P,
+  A,
   H3,
   H4,
-  Section,
   Hr,
-  A,
+  P,
+  Section,
   TableOfContents,
+  useGuideScroll,
 } from '@/components/layout/guide';
+import { useMemo } from 'react';
 
 const codeStep1 = `\`\`\`solidity
 if (msg.value < price * numCoffees) {
@@ -113,9 +113,9 @@ export default function Guide() {
           <Section id="contract-summary">
             <H4>Contract Summary</H4>
             <P>
-              The <code>BuyMeACoffee.sol</code> smart contract allows users to send ETH donations to
-              the owner of the contract. Users who donate ETH by buying the owner a contract can
-              also submit a message.
+              The <code>BuyMeACoffee.sol</code> smart contract allows users to
+              send ETH donations to the owner of the contract. Users who donate
+              ETH by buying the owner a contract can also submit a message.
             </P>
           </Section>
           <Section id="buyCoffee-explanation">
@@ -123,10 +123,11 @@ export default function Guide() {
               <code className="text-xl">buyCoffee</code> Explanation
             </H4>
             <P>
-              <code>buyCoffee</code> is a <code>public payable</code> function that allows a user to
-              specify the number of coffees they would like to buy for the owner of the contract.
-              This acts as a donation mechanism, where the user supplies enough ETH to cover the
-              cost of the number of coffees specified. The contract{' '}
+              <code>buyCoffee</code> is a <code>public payable</code> function
+              that allows a user to specify the number of coffees they would
+              like to buy for the owner of the contract. This acts as a donation
+              mechanism, where the user supplies enough ETH to cover the cost of
+              the number of coffees specified. The contract{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L81-L83">
                 ensures
               </A>{' '}
@@ -134,9 +135,10 @@ export default function Guide() {
             </P>
             <CodeBlock code={codeStep1} language="solidity" />
             <P>
-              In addition, the user provides their name, twitter handle, and a custom message that
-              can be retrieved form the contract to display later. The <code>buyCoffee</code>{' '}
-              function ensures that a non-empty name and message{' '}
+              In addition, the user provides their name, twitter handle, and a
+              custom message that can be retrieved form the contract to display
+              later. The <code>buyCoffee</code> function ensures that a
+              non-empty name and message{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L87-L89">
                 have been provided
               </A>
@@ -144,7 +146,8 @@ export default function Guide() {
             </P>
             <CodeBlock code={codeStep2} language="solidity" />
             <P>
-              There is also a check to make sure the provided name, twitter handle, and message{' '}
+              There is also a check to make sure the provided name, twitter
+              handle, and message{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L91-L93">
                 do not exceed
               </A>{' '}
@@ -152,8 +155,8 @@ export default function Guide() {
             </P>
             <CodeBlock code={codeStep3} language="solidity" />
             <P>
-              The message is then instantiated as a <code>Memo</code> struct object, which consists
-              of the following{' '}
+              The message is then instantiated as a <code>Memo</code> struct
+              object, which consists of the following{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L27-L34">
                 fields
               </A>
@@ -174,14 +177,15 @@ export default function Guide() {
               <code className="text-xl">getMemos</code> Explanation
             </H4>
             <P>
-              <code>getMemos</code> is a <code>public view</code> function that returns an array of{' '}
-              <code>Memo</code> elements from the
-              <code>memos</code> storage variable. The user provides an index and size parameter,
-              which dictate the start position and total number of <code>Memo</code> elements to
-              return.
+              <code>getMemos</code> is a <code>public view</code> function that
+              returns an array of <code>Memo</code> elements from the
+              <code>memos</code> storage variable. The user provides an index
+              and size parameter, which dictate the start position and total
+              number of <code>Memo</code> elements to return.
             </P>
             <P>
-              If the total length of the <code>memos</code> storage variable is 0, then the{' '}
+              If the total length of the <code>memos</code> storage variable is
+              0, then the{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L164">
                 empty array
               </A>{' '}
@@ -189,8 +193,8 @@ export default function Guide() {
             </P>
             <CodeBlock code={codeStep6} language="solidity" />
             <P>
-              If the provided index exceeds the total length of the <code>memos</code> storage
-              variable, then the call will{' '}
+              If the provided index exceeds the total length of the{' '}
+              <code>memos</code> storage variable, then the call will{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L168">
                 revert
               </A>
@@ -202,24 +206,25 @@ export default function Guide() {
             </P>
             <CodeBlock code={codeStep7} language="solidity" />
             <P>
-              <code>getMemos</code> then calculates the total number of elements that can be
-              returned given the index and size, as the requested number of elements may exceeds the
-              end of the <code>memos</code>
+              <code>getMemos</code> then calculates the total number of elements
+              that can be returned given the index and size, as the requested
+              number of elements may exceeds the end of the <code>memos</code>
               array. If that occurs, the total number of elements to return{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L177-L178">
                 will be truncated
               </A>{' '}
-              to the total number of elements remaining in the <code>memos</code> storage variable.
+              to the total number of elements remaining in the{' '}
+              <code>memos</code> storage variable.
             </P>
             <CodeBlock code={codeStep8} language="solidity" />
             <P>
-              Once the number of elements to return has been calculated, the function will iterate
-              through the <code>memos</code> array,{' '}
+              Once the number of elements to return has been calculated, the
+              function will iterate through the <code>memos</code> array,{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L181-L184">
                 copying elements
               </A>{' '}
-              into the temporary memory array. Once the loop has completed, the temporary memory
-              array{' '}
+              into the temporary memory array. Once the loop has completed, the
+              temporary memory array{' '}
               <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L186">
                 will be returned
               </A>{' '}

@@ -13,7 +13,7 @@ export function AccountDropdown() {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild>
+      <DropdownMenu.Trigger asChild={true}>
         <div className="flex h-8 w-8 items-center justify-center">
           {address && (
             <button type="button" aria-label="Disconnect">

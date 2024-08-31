@@ -1,12 +1,12 @@
+import OnchainProviders from '@/OnchainProviders';
+import { markStep } from '@/utils/analytics';
 /**
  * @jest-environment jsdom
  */
 import { renderHook } from '@testing-library/react';
 import { useReadContract } from 'wagmi';
-import OnchainProviders from '@/OnchainProviders';
-import { markStep } from '@/utils/analytics';
-import useOnchainCoffeeMemos from '../useOnchainCoffeeMemos';
 import type { CoffeeMemo } from '../../_components/types';
+import useOnchainCoffeeMemos from '../useOnchainCoffeeMemos';
 
 jest.mock('../utils/analytics', () => ({
   markStep: jest.fn(),
@@ -38,7 +38,9 @@ describe('useOnchainCoffeeMemos', () => {
     }));
     expect(markStep).not.toHaveBeenCalled();
 
-    const { result } = renderHook(() => useOnchainCoffeeMemos(), { wrapper: OnchainProviders });
+    const { result } = renderHook(() => useOnchainCoffeeMemos(), {
+      wrapper: OnchainProviders,
+    });
 
     expect(result.current.memos).toStrictEqual(memos);
     expect(markStep).toHaveBeenCalledTimes(2);
@@ -62,7 +64,9 @@ describe('useOnchainCoffeeMemos', () => {
     }));
     expect(markStep).not.toHaveBeenCalled();
 
-    const { result } = renderHook(() => useOnchainCoffeeMemos(), { wrapper: OnchainProviders });
+    const { result } = renderHook(() => useOnchainCoffeeMemos(), {
+      wrapper: OnchainProviders,
+    });
 
     expect(result.current.memos).toStrictEqual([]);
     expect(markStep).toHaveBeenCalledTimes(2);

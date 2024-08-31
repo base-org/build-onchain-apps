@@ -1,11 +1,11 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { createWagmiConfig } from '@/store/createWagmiConfig';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import type { ReactNode } from 'react';
 import { baseSepolia } from 'viem/chains';
 import { WagmiProvider } from 'wagmi';
-import { createWagmiConfig } from '@/store/createWagmiConfig';
 
 import '@coinbase/onchainkit/styles.css';
 
