@@ -3,7 +3,6 @@ import Main from '@/components/layout/Main';
 import Banner from '@/components/layout/banner/banner';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
-import Guide from './_components/Guide';
 import PaymasterBundlerApp from './_components/PaymasterBundlerDemo';
 
 /**
@@ -23,7 +22,6 @@ export default function PaymasterBundlerPage() {
         <div className="rounded-lg bg-gray-900 px-4 py-6 text-white">
           <PaymasterBundlerApp />
         </div>
-        <Guide />
       </Main>
       <Footer />
     </>

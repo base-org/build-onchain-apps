@@ -6,7 +6,6 @@ import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import { useEffect, useState } from 'react';
 import BuyMeCoffeeContractDemo from './_components/ContractDemo';
-import Guide from './_components/Guide';
 
 /**
  * Use the page component to wrap the components
@@ -30,7 +29,6 @@ export default function BuyMeCoffeePage() {
       <Main>
         <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
         <BuyMeCoffeeContractDemo />
-        <Guide />
       </Main>
       <Footer />
     </>
