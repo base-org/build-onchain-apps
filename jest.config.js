@@ -6,7 +6,6 @@ const customJestConfig = {
   collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/node_modules/**'],
   coverageReporters: ['clover', 'json', 'lcov', 'text'],
   moduleNameMapper: {
-    'rehype-pretty-code': '<rootDir>/node_modules/rehype-pretty-code',
     '@coinbase/onchainkit/wallet':
       '<rootDir>/node_modules/@coinbase/onchainkit/esm/wallet',
   },
