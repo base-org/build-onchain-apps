@@ -15,11 +15,11 @@ export default function BuyMeCoffeeContractDemo() {
     >
       <section
         className={clsx([
-          'rounded-lg border border-solid border-boat-color-palette-line',
+          'rounded-lg border border-boat-color-palette-line border-solid',
           'bg-boat-color-palette-backgroundalternate p-10',
         ])}
       >
-        <h2 className="mb-5 w-fit text-2xl font-semibold text-white">
+        <h2 className="mb-5 w-fit font-semibold text-2xl text-white">
           Messages from supporters
         </h2>
 
@@ -28,7 +28,7 @@ export default function BuyMeCoffeeContractDemo() {
       <aside>
         <div
           className={clsx([
-            'mt-10 rounded-lg border border-solid border-boat-color-palette-line',
+            'mt-10 rounded-lg border border-boat-color-palette-line border-solid',
             'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
           ])}
         >

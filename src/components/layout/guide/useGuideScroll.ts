@@ -22,7 +22,7 @@ export default function useGuideScroll() {
       });
 
       window.document
-        .querySelectorAll(`aside nav li a[href]`)
+        .querySelectorAll('aside nav li a[href]')
         .forEach((linkItem) => linkItem.setAttribute('data-active', 'false'));
 
       window.document

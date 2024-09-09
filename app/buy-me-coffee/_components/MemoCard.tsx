@@ -26,32 +26,32 @@ function MemoCard({
         <div className="flex items-center gap-3">
           <Avatar address={userAddress} />
           <div className="inline-flex items-start gap-1 md:flex">
-            <span className="text-3 text-bold truncate text-wrap font-bold text-boat-color-palette-foreground">
+            <span className="truncate text-wrap font-bold text-3 text-boat-color-palette-foreground text-bold">
               <Name address={userAddress} />
             </span>
-            <span className="text-3 line-clamp-1 flex-1 truncate text-wrap break-all font-normal text-boat-color-palette-foregroundmuted">
+            <span className="line-clamp-1 flex-1 truncate text-wrap break-all font-normal text-3 text-boat-color-palette-foregroundmuted">
               {twitterHandle ? ` (@${twitterHandle})` : null}
             </span>
-            <span className="text-3 whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
+            <span className="whitespace-nowrap font-normal text-3 text-boat-color-palette-foregroundmuted">
               bought {numCoffeesInt} coffee{numCoffeesInt > 1 ? 's' : null}
             </span>
           </div>
         </div>
-        <div className="text-3 ml-[43px] whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
+        <div className="ml-[43px] whitespace-nowrap font-normal text-3 text-boat-color-palette-foregroundmuted">
           {convertedTimestamp.toDateString()}
         </div>
       </div>
       <div
         className={clsx([
           'flex w-full items-center rounded-2xl border-2',
-          'border-solid border-[color:var(--boat-color-foregroundMuted,#8A919E)] p-6 backdrop-blur-[20px]',
+          'border-[color:var(--boat-color-foregroundMuted,#8A919E)] border-solid p-6 backdrop-blur-[20px]',
         ])}
       >
         <p className="flex w-[0px] shrink grow items-start gap-1">
           <span
             className={clsx([
               'truncate whitespace-nowrap text-wrap text-base ',
-              'font-normal not-italic leading-6 text-boat-color-palette-foreground',
+              'font-normal text-boat-color-palette-foreground not-italic leading-6',
             ])}
           >
             {message}

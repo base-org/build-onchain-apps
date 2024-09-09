@@ -90,7 +90,9 @@ export default function useSmartContractForms({
 
   useEffect(() => {
     async function onTransactionReceiptStatus() {
-      if ((dataHash as string) === '') return;
+      if ((dataHash as string) === '') {
+        return;
+      }
 
       if (transactionReceiptStatus === 'error') {
         if (

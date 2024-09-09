@@ -4,7 +4,14 @@ import {
   GitHubLogoIcon,
   HamburgerMenuIcon,
 } from '@radix-ui/react-icons';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import {
+  Content,
+  Item,
+  List,
+  Root,
+  Trigger,
+  Viewport,
+} from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import { useCallback, useState } from 'react';
 import AccountConnect from './AccountConnect';
@@ -20,14 +27,14 @@ export default function NavbarMobile() {
 
   if (isMobileMenuOpen) {
     return (
-      <nav className="sm:max-h-300 mx-2 flex flex-col gap-4 rounded-[25px] bg-black bg-opacity-50 p-2 backdrop-blur-2xl">
+      <nav className="mx-2 flex flex-col gap-4 rounded-[25px] bg-black bg-opacity-50 p-2 backdrop-blur-2xl sm:max-h-300">
         <div
           className={[
             'flex flex-1 flex-grow items-center justify-between',
             'rounded-[50px] border border-stone-300 bg-opacity-10 p-4 backdrop-blur-2xl',
-          ].join(' ')}
+          ].join('')}
         >
-          <div className="h-38 flex grow items-center justify-between gap-4">
+          <div className="flex h-38 grow items-center justify-between gap-4">
             <NavbarTitle />
             <button
               type="button"
@@ -53,13 +60,11 @@ export default function NavbarMobile() {
               <NavbarLink href="/#get-started">Get Started</NavbarLink>
             </li>
             <li className="flex">
-              <NavigationMenu.Root className="relative flex flex-grow flex-col">
-                <NavigationMenu.List
-                  className={clsx('flex flex-row space-x-2')}
-                >
-                  <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className="group flex items-center justify-start gap-1">
-                      <span className="font-robotoMono text-center text-base font-normal text-white">
+              <Root className="relative flex flex-grow flex-col">
+                <List className={clsx('flex flex-row space-x-2')}>
+                  <Item>
+                    <Trigger className="group flex items-center justify-start gap-1">
+                      <span className="text-center font-normal font-robotoMono text-base text-white">
                         Experiences
                       </span>
                       <ChevronDownIcon
@@ -67,21 +72,19 @@ export default function NavbarMobile() {
                         width="16"
                         height="16"
                       />
-                    </NavigationMenu.Trigger>
-                    <NavigationMenu.Content
+                    </Trigger>
+                    <Content
                       className={clsx(
-                        'h-38 inline-flex flex-grow flex-col items-start justify-start gap-6',
+                        'inline-flex h-38 flex-grow flex-col items-start justify-start gap-6',
                         'mt-4 rounded-lg p-6 shadow backdrop-blur-2xl',
                       )}
                     >
                       <Experiences />
-                    </NavigationMenu.Content>
-                  </NavigationMenu.Item>
-                </NavigationMenu.List>
-                <NavigationMenu.Viewport
-                  className={clsx('flex flex-col justify-center')}
-                />
-              </NavigationMenu.Root>
+                    </Content>
+                  </Item>
+                </List>
+                <Viewport className={clsx('flex flex-col justify-center')} />
+              </Root>
             </li>
           </ul>
           <div className="mx-2 mt-4">
@@ -98,7 +101,7 @@ export default function NavbarMobile() {
         'flex flex-1 flex-grow items-center justify-between',
         'rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl',
         'mx-4',
-      ].join(' ')}
+      ].join('')}
     >
       <div className="flex h-8 grow items-center justify-between gap-4">
         <NavbarTitle />

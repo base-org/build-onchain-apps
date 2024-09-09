@@ -100,8 +100,8 @@ export default function MintContractDemo() {
         )}
       </div>
 
-      <div className="flex-shrink-1 mt-10 w-full flex-grow-0 lg:mt-0">
-        <h1 className="text-4xl font-bold">{collectionNameOrAddress}</h1>
+      <div className="mt-10 w-full flex-shrink-1 flex-grow-0 lg:mt-0">
+        <h1 className="font-bold text-4xl">{collectionNameOrAddress}</h1>
 
         {isConnected && (
           <h2 className="my-5">
@@ -121,7 +121,7 @@ export default function MintContractDemo() {
           </h2>
         )}
 
-        <p className="mb-6 mt-4 text-sm text-boat-footer-light-gray">
+        <p className="mt-4 mb-6 text-boat-footer-light-gray text-sm">
           {description}
         </p>
 

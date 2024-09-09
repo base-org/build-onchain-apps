@@ -75,13 +75,13 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
 
   return (
     <>
-      <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
+      <h2 className="mb-5 w-full text-center font-semibold text-2xl text-white lg:text-left">
         Buy Me a Coffee!
       </h2>
       <form onSubmit={onSubmitTransaction} className="w-full">
         <div className="my-4 items-center lg:flex lg:gap-4">
           <div className="text-center text-4xl lg:text-left">☕</div>
-          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">
+          <div className="mt-2 mb-4 text-center font-sans text-xl lg:my-0 lg:text-left">
             X
           </div>
           <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">

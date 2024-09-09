@@ -55,7 +55,7 @@ export default function PaymasterBundlerDemo() {
         <header>
           <h2
             className={clsx(
-              'border-b-2 border-gray-700 pb-2 text-xl font-semibold',
+              'border-gray-700 border-b-2 pb-2 font-semibold text-xl',
             )}
           >
             Account Details
@@ -75,7 +75,7 @@ export default function PaymasterBundlerDemo() {
         <header>
           <h1
             className={clsx(
-              'border-b-2 border-gray-700 pb-2 text-center text-2xl font-bold',
+              'border-gray-700 border-b-2 pb-2 text-center font-bold text-2xl',
             )}
           >
             Mint NFTs with Coinbase Paymaster
@@ -89,7 +89,7 @@ export default function PaymasterBundlerDemo() {
         <button
           type="button"
           className={clsx(
-            'mt-4 block w-full rounded-full py-3.5 text-lg font-bold text-white transition duration-300',
+            'mt-4 block w-full rounded-full py-3.5 font-bold text-lg text-white transition duration-300',
             address
               ? 'cursor-pointer bg-blue-600 hover:bg-blue-700'
               : 'cursor-not-allowed bg-gray-600',

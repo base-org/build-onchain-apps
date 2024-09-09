@@ -8,7 +8,7 @@ export default function Label({
   return (
     <label
       htmlFor={htmlFor}
-      className="mb-2 block text-sm font-medium text-white"
+      className="mb-2 block font-medium text-sm text-white"
     >
       {children}
     </label>

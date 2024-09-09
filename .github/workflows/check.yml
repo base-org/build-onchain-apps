@@ -19,7 +19,7 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Template Install dependencies
-        run: bun install
+        run: yarn install
 
       - name: Template Check
-        run: bun run ci:check
+        run: yarn run ci:check

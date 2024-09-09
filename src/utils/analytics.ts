@@ -42,7 +42,7 @@ export const initAnalytics = () => {
 
 export const markStep = (stepName: string) => {
   if (isClient() && perfumeLib && perfumeLib.markStep) {
-    perfumeLib.end('perf.' + stepName);
-    perfumeLib.start('perf.' + stepName);
+    perfumeLib.end(`perf.${stepName}`);
+    perfumeLib.start(`perf.${stepName}`);
   }
 };

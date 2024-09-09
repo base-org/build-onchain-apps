@@ -42,16 +42,15 @@ export const getCollectionMetadataAction = async ({
   const jsonParsedMetadata = tryParseMetadataJson(metadataURI, gatewayHostname);
   if (jsonParsedMetadata) {
     return jsonParsedMetadata;
-  } else {
-    const response = await fetch(ipfsToHTTP(metadataURI, gatewayHostname));
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
-    }
-    const json = (await response.json()) as JsonMetadata;
-    return {
-      name: json.name,
-      description: json.description,
-      image: ipfsToHTTP(json.image ?? '', gatewayHostname),
-    };
   }
+  const response = await fetch(ipfsToHTTP(metadataURI, gatewayHostname));
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status}`);
+  }
+  const json = (await response.json()) as JsonMetadata;
+  return {
+    name: json.name,
+    description: json.description,
+    image: ipfsToHTTP(json.image ?? '', gatewayHostname),
+  };
 };

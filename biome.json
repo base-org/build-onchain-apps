@@ -61,6 +61,6 @@
     }
   },
   "files": {
-    "ignore": ["contracts/**", "coverage/**", ".next/**"]
+    "ignore": ["contracts/**", "coverage/**", ".next/**", "public/**"]
   }
 }

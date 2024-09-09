@@ -5,7 +5,7 @@ function ListItem({ children }: { children: React.ReactNode }) {
   return (
     <li className="inline-flex items-center justify-start gap-4">
       <CheckIcon width="24" height="24" />
-      <span className="font-inter text-xl font-normal leading-7 text-white">
+      <span className="font-inter font-normal text-white text-xl leading-7">
         {children}
       </span>
     </li>
@@ -16,7 +16,7 @@ export default function HomeMain() {
   return (
     <section className="mb-12 flex flex-col items-center justify-center">
       <div className="w-full md:w-4/5">
-        <h2 className="mb-10 text-center text-xl font-medium text-white md:text-2xl lg:text-3xl">
+        <h2 className="mb-10 text-center font-medium text-white text-xl md:text-2xl lg:text-3xl">
           Save weeks of initial app setup and the hassle of integrating onchain
           components with web2 infrastructure.
         </h2>
