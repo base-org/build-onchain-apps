@@ -4,13 +4,14 @@
   "scripts": {
     "build": "rm -rf .next && next build",
     "check": "biome check --write .",
+    "ci:check": "biome ci --formatter-enabled=false --linter-enabled=false",
+    "ci:format": "biome ci --linter-enabled=false --organize-imports-enabled=false",
+    "ci:lint": "biome ci --formatter-enabled=false --organize-imports-enabled=false",
     "dev": "next dev",
     "format": "biome format --write .",
     "lint": "biome lint --write .",
     "lint:unsafe": "biome lint --write --unsafe .",
     "start": "next start",
-    "stylelint": "stylelint '**/*.css' --fix",
-    "stylelint:check": "stylelint '**/*.css'",
     "test": "jest .",
     "test:coverage": "jest . --coverage",
     "test:coverage:open": "yarn test:coverage && open coverage/lcov-report/index.html"
