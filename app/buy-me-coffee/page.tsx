@@ -1,7 +1,6 @@
 'use client';
 
 import Main from '@/components/layout/Main';
-import Banner from '@/components/layout/banner/banner';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import { useEffect, useState } from 'react';
@@ -27,7 +26,6 @@ export default function BuyMeCoffeePage() {
     <>
       <Header />
       <Main>
-        <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
         <BuyMeCoffeeContractDemo />
       </Main>
       <Footer />

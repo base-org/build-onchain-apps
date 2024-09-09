@@ -1,7 +1,6 @@
 'use client';
 
 import Main from '@/components/layout/Main';
-import Banner from '@/components/layout/banner/banner';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import dynamic from 'next/dynamic';
@@ -25,7 +24,6 @@ export default function MintPage() {
     <>
       <Header />
       <Main>
-        <Banner pageName="Mint NFT" pageUrl="mint" />
         <MintContractDemo />
       </Main>
       <Footer />
