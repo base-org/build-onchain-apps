@@ -53,7 +53,7 @@ A deploy script `AllowlistNFT.s.sol` is provided. Please be sure to update all o
 3. `allowlistRoot`: The allowlist root generated for your allowlisted addresses. For information on generating merkle roots for allowlists, you can read about this in-depth guide [here](https://medium.com/@ItsCuzzo/using-merkle-trees-for-nft-allowlists-523b58ada3f9)
 4. `maxSupply`: The maximum number of NFTs in your collection.
 5. `price`: The price of a public mint.
-6. `allowlistPrice`: The price of a allowlist mint.
+6. `allowlistPrice`: The price of an allowlist mint.
 7. `allowlistOpen`: The timestamp in which allowlist mint begins.
 8. `allowlistClose`: The timestamp in which allowlist mint ends. Note: Public mint will begin immediately after `allowlistClose`.
 9. `maxAllowlistMint`: The maximum number of NFTs a allowlisted address can allowlist mint.
