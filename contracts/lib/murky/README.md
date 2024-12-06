@@ -35,7 +35,7 @@ assertTrue(verified);
 ```
 
 ### Notes
-* `Xorkle.sol` is implemented as a XOR tree. This allows for greater gas efficiency: hashes are calculated on 32 bytes instead of 64; it is agnostic of sibling order so there is less lt/gt branching. Note that XOR trees are not appropriate for all use-cases*.
+* `Xorkle.sol` is implemented as an XOR tree. This allows for greater gas efficiency: hashes are calculated on 32 bytes instead of 64; it is agnostic of sibling order so there is less lt/gt branching. Note that XOR trees are not appropriate for all use-cases*.
 
 * `Merkle.sol` is implemented using concatenation and thus is a generic merkle tree. It's less efficient, but is compatible with [OpenZeppelin's Prover](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/cryptography/MerkleProof.sol) and other implementations. Use this one if you aren't sure. Compatiblity with OZ Prover is implemented as a fuzz test.
 
