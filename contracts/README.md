@@ -38,7 +38,7 @@ It also contains a sample implementation (`CustomERC1155.sol`) of ERC1155 using 
 
 #### AllowlistNFT
 
-Contract that allows a user to mint a ERC721A either from a allowlist or from a public mint. This is useful for mints where you want to allow specified users to have early access and (optionally) a lower mint price. After your defined allowlist window ends, the public mint will begin immediately. This contract uses [ERC721A](https://github.com/chiru-labs/ERC721A) as base to allow for more efficient minting of multiple NFTs in a single transaction.
+Contract that allows a user to mint an ERC721A either from a allowlist or from a public mint. This is useful for mints where you want to allow specified users to have early access and (optionally) a lower mint price. After your defined allowlist window ends, the public mint will begin immediately. This contract uses [ERC721A](https://github.com/chiru-labs/ERC721A) as base to allow for more efficient minting of multiple NFTs in a single transaction.
 
 It also makes use of the following utility libraries for allowlist proof verification:
 
