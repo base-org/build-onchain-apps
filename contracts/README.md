@@ -67,15 +67,15 @@ A deploy script `AllowlistNFT.s.sol` is provided. Please be sure to update all o
 ├── foundry.toml
 ├── script
 │   └── BuyMeACoffee.s.sol
-│   └── CustomERC155.s.sol
+│   └── CustomERC1155.s.sol
 │   └── AllowlistNFT.s.sol
 ├── src
 │   └── BuyMeACoffee.sol
-│    └── CustomERC155.sol
+│    └── CustomERC1155.sol
 │   └── AllowlistNFT.sol
 └── test
     └── BuyMeACoffee.t.sol
-    └── CustomERC155.t.sol
+    └── CustomERC1155.t.sol
     └── AllowlistNFT.t.sol
 
 ```
