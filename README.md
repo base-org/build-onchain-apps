@@ -1,3 +1,15 @@
+# Deprecation Notice
+
+> ⚠️ **Important:** Build-onchain-apps has been deprecated as of February 5, 2025.
+## What This Means
+
+This service is no longer actively maintained or supported.
+
+## Need Help?
+
+If you have any questions or concerns:
+- Contact our support team through [Discord](https://discord.gg/vbpeXpkPkw)
+
 <img src='./docs/logo-v-0-17.png' width='800' alt='Build Onchain Apps Template'>
 
 # [Build Onchain Apps Template (⛵️)](https://github.com/coinbase/build-onchain-apps/)
